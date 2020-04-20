@@ -1,1 +1,3 @@
-<p>type-list works!</p>
+<div *ngFor="let type of typelist">
+    <a title="More about {{type.name}}" href={{type.url}}>{{ type.name }}</a>
+</div>
