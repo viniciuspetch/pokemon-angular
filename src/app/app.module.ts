@@ -16,7 +16,7 @@ import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }])
+    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, {path: 'pokemon/:name', component: PokemonInfoComponent}])
   ],
   providers: [],
   bootstrap: [AppComponent]
