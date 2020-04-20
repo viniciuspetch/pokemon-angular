@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { pokemonlist } from '../pokemonlist'
 
 @Component({
   selector: 'app-pokemon-list',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
+  pokemonlist;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.pokemonlist = pokemonlist
+    var pokemonListOnly = []
+    for (var i = 0; i < 8; i++) {
+      console.log(pokemonlist["gen" + (i + 1)])
+      pokemonListOnly.push(pokemonlist["gen" + (i + 1)])
+    }
+    this.pokemonlist = pokemonListOnly
+    console.log("Hello")
   }
 
 }
