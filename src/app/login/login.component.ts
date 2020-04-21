@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, } from '@angular/forms'
 import { HttpClient } from '@angular/common/http'
 import { LoginService } from '../login.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { LoginService } from '../login.service'
 export class LoginComponent implements OnInit {
   loginForm;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) { this.loginForm = this.formBuilder.group({ username: '', password: '' }) }
+  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) { this.loginForm = this.formBuilder.group({ username: '', password: '' }) }
 
   ngOnInit(): void {
     console.log(this.loginService.getToken())
@@ -24,7 +25,13 @@ export class LoginComponent implements OnInit {
     var password = loginData.password;
 
     var response = this.http.post('http://localhost:8001/login', { username, password });
-    response.subscribe((data) => { this.loginService.setToken(data['token']), console.log(this.loginService.getToken()) })
+    response.subscribe((data) => {
+      this.loginService.setToken(data['token']);
+      console.log(this.loginService.getToken());
+      if (this.loginService.getToken()) {
+        this.router.navigateByUrl('/')
+      }
+    })
   }
 
   logout() {
