@@ -20,11 +20,11 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem("token")
-    this.title = "Pokémon Info - Angular";
-
     console.log("/")
-    console.log(localStorage.getItem("token"))
+
+    this.token = this.loginService.getToken()
+    this.title = "Pokémon Info - Angular";
+    
     console.log(this.token)
   }
 

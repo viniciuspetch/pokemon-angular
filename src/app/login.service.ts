@@ -4,22 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  token = null;
   constructor() { }
 
   setToken(token) {
-    this.token = token;
+    localStorage.setItem("token", token)
   }
 
   getToken() {
-    return this.token;
+    return localStorage.getItem("token")
   }
 
   clearToken() {
-    this.token = null
-  }
-
-  verifyToken() {
-    return true;
+    this.setToken(null)
   }
 }

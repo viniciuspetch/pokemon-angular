@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, } from '@angular/forms'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
-import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +11,7 @@ import { LoginService } from '../login.service';
 export class SignupComponent implements OnInit {
   signupForm;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) { this.signupForm = this.formBuilder.group({ username: '', password: '' }) }
+  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { this.signupForm = this.formBuilder.group({ username: '', password: '' }) }
 
   ngOnInit(): void {
   }
