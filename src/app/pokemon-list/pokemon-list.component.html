@@ -1,3 +1,6 @@
 <div *ngFor="let gen of pokemonlist">
-    <a>{{gen}}</a><hr>
+    <div *ngFor="let pokemon of gen">
+        <a routerLink="/pokemon/{{pokemon}}">{{pokemon}}</a>
+    </div>
+    <hr>
 </div>
