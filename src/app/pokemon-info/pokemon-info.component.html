@@ -1,2 +1,23 @@
-<div>Here is {{name}}</div><br>
-<div *ngIf="token">Types: {{pokemonInfo.types[0].type.name.charAt(0).toUpperCase() + pokemonInfo.types[0].type.name.slice(1)}}<span *ngIf="pokemonInfo.types[1].type.name">, {{pokemonInfo.types[1].type.name.charAt(0).toUpperCase() + pokemonInfo.types[1].type.name.slice(1)}}</span></div>
+<div>nº {{pokemonInfo.id}}: {{name}}</div><br>
+<div *ngIf="token">
+    You're logged    
+    Types: {{pokemonInfo.types[0].type.name.charAt(0).toUpperCase() + pokemonInfo.types[0].type.name.slice(1)}}
+    <span *ngIf="pokemonInfo.types[1].type.name">, {{pokemonInfo.types[1].type.name.charAt(0).toUpperCase() + pokemonInfo.types[1].type.name.slice(1)}}</span>
+    
+    <div *ngFor="let ability of pokemonInfo.abilities">
+        {{ability.ability.name}}
+    </div>
+    
+    <table class="mat-table">
+        <tr class="mat-header-row">
+            <th class="mat-header-cell">Move</th>
+            <th class="mat-header-cell">How to learn</th>
+        </tr>
+        <tr *ngFor="let move of pokemonInfo.moves" class="mat-row">
+            <td class="mat-cell">{{move.move.name}}</td>
+            <td class="mat-cell"><span *ngIf="move.version_group_details[0].move_learn_method.name == 'level-up'">Level-up at level {{move.version_group_details[0].level_learned_at}}</span>
+                <span *ngIf="move.version_group_details[0].move_learn_method.name == 'machine'">TM/HM</span>
+                <span *ngIf="move.version_group_details[0].move_learn_method.name == 'tutor'">Tutor NPC</span></td>
+        </tr>
+    </table>
+</div>

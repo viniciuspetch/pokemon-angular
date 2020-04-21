@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './signup/signup.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SignupComponent } from './signup/signup.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, {path: 'signup', component: SignupComponent}]),
+    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, { path: 'signup', component: SignupComponent }]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -43,6 +44,7 @@ import { SignupComponent } from './signup/signup.component';
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

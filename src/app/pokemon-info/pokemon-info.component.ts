@@ -15,15 +15,14 @@ export class PokemonInfoComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.token = this.loginService.getToken()
+    console.log("/pokemon/:pokemon");
+    console.log(localStorage.getItem("token"));
+    this.token = localStorage.getItem("token");
     this.route.params.subscribe(params => {
       this.name = params['name'];
     });
-    console.log(this.route.queryParams)
     var searchName = this.name.toLowerCase()
-    console.log(searchName)
     var response = this.http.get('https://pokeapi.co/api/v2/pokemon/' + searchName)
-    var json;
-    response.subscribe((data) => this.pokemonInfo = { types: data['types'] });
+    response.subscribe((data) => {this.pokemonInfo = data; console.log(this.pokemonInfo)});
   }
 }
