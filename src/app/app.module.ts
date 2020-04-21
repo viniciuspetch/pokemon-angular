@@ -11,11 +11,12 @@ import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
-
-import {MatButtonModule} from '@angular/material/button'; 
-
-import {MatToolbarModule} from '@angular/material/toolbar'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
