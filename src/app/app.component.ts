@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service'
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,17 @@ import { LoginService } from './login.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private loginService: LoginService) { }
-  title = 'pokemon-angular';
+  title;
+  token;
+
+  constructor(private router: Router, private loginService: LoginService) {
+    this.title = "Pokémon Info - Angular"
+    router.events.subscribe(val => {
+      if (val instanceof NavigationEnd) {
+        this.token = this.loginService.getToken();
+      }      
+    })
+  }  
 
   signout() {
     this.loginService.clearToken()
