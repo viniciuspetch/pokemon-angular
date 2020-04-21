@@ -16,7 +16,6 @@ signUp = function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var hash = bcrypt.hashSync(password, 5);
-  console.log(username, hash);
 
   const client = new MongoClient(dburl, { useUnifiedTopology: true });
   client
@@ -28,7 +27,6 @@ signUp = function (req, res) {
         .insertOne({ username, hash })
     )
     .then(() => {
-      console.log("here");
       res.sendStatus(200);
     })
     .catch((err) => console.log(err))
@@ -50,10 +48,11 @@ login = function (req, res) {
         .findOne({ username: username })
     )
     .then((docs) => {
-      console.log(docs);
-      console.log(docs.hash);
-      console.log(bcrypt.compareSync(password, docs.hash));
-      res.sendStatus(200);
+      if (bcrypt.compareSync(password, docs.hash)) {
+        res.json({ token: jwt.sign({ username }, "pokemon") });
+      } else {
+        res.sendStatus(400);
+      }
     })
     .catch((err) => console.log(err))
     .finally(() => client.close());
