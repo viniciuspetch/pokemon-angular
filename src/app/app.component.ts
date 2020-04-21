@@ -12,7 +12,6 @@ export class AppComponent {
   token;
 
   constructor(private router: Router, private loginService: LoginService) {
-    this.title = "Pokémon Info - Angular"
     router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.token = this.loginService.getToken();
@@ -20,9 +19,18 @@ export class AppComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.token = localStorage.getItem("token")
+    this.title = "Pokémon Info - Angular";
+
+    console.log("/")
+    console.log(localStorage.getItem("token"))
+    console.log(this.token)
+  }
+
   signout() {
-    this.loginService.clearToken()
+    this.loginService.clearToken();
     this.token = this.loginService.getToken();
-    this.router.navigateByUrl('/')
+    this.router.navigateByUrl('/');
   }
 }
