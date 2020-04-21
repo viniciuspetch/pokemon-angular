@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     var username = loginData.username;
     var password = loginData.password;
 
-    var response = this.http.post('http://localhost:27017/login', { username, password });
+    var response = this.http.post('http://localhost:8001/login', { username, password });
     response.subscribe((data) => this.info = data)
   }
 

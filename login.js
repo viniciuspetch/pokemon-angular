@@ -3,11 +3,13 @@ const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 const port = 8001;
 const app = express();
 const dburl = "mongodb://localhost:27017";
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
