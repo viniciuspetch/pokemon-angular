@@ -1,3 +1,8 @@
-<div *ngFor="let type of typelist">
-    <a title="More about {{type.name}}" href={{type.url}}>{{ type.name }}</a>
-</div>
+<mat-list>
+    <div *ngFor="let type of typelist">
+        <mat-list-item>
+            <a title="More about {{type.name}}" href={{type.url}}>{{ type.name }}</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>        
+    </div>
+</mat-list>

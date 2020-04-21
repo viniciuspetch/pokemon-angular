@@ -1,8 +1,8 @@
-<mat-list color="primary">
+<mat-list>
     <div *ngFor="let gen of pokemonlist">
         <div *ngFor="let pokemon of gen">
-            <mat-list-item color="primary">
-                <a color="primary" routerLink="/pokemon/{{pokemon}}">{{pokemon}}</a>
+            <mat-list-item>
+                <a routerLink="/pokemon/{{pokemon}}">{{pokemon}}</a>
             </mat-list-item>
             <mat-divider></mat-divider>
         </div>
