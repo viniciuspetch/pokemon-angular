@@ -1,23 +1,28 @@
-<div>nº {{pokemonInfo.id}}: {{name}}</div><br>
+<h2>nº {{pkdata.id}}: {{pkdata.name}}</h2>
 <div *ngIf="token">
-    You're logged    
-    Types: {{pokemonInfo.types[0].type.name.charAt(0).toUpperCase() + pokemonInfo.types[0].type.name.slice(1)}}
-    <span *ngIf="pokemonInfo.types[1].type.name">, {{pokemonInfo.types[1].type.name.charAt(0).toUpperCase() + pokemonInfo.types[1].type.name.slice(1)}}</span>
-    
-    <div *ngFor="let ability of pokemonInfo.abilities">
-        {{ability.ability.name}}
-    </div>
-    
-    <table class="mat-table">
-        <tr class="mat-header-row">
-            <th class="mat-header-cell">Move</th>
-            <th class="mat-header-cell">How to learn</th>
-        </tr>
-        <tr *ngFor="let move of pokemonInfo.moves" class="mat-row">
-            <td class="mat-cell">{{move.move.name}}</td>
-            <td class="mat-cell"><span *ngIf="move.version_group_details[0].move_learn_method.name == 'level-up'">Level-up at level {{move.version_group_details[0].level_learned_at}}</span>
-                <span *ngIf="move.version_group_details[0].move_learn_method.name == 'machine'">TM/HM</span>
-                <span *ngIf="move.version_group_details[0].move_learn_method.name == 'tutor'">Tutor NPC</span></td>
-        </tr>
-    </table>
+    <mat-card>
+        <h3>Types:</h3>
+        <mat-list *ngFor="let type of pkdata.types">
+            <mat-list-item>{{type}}</mat-list-item>
+        </mat-list>
+    </mat-card>
+    <mat-card>
+        <h3>Abilities:</h3>
+        <mat-list *ngFor="let ability of pkdata.abilities">
+            <mat-list-item>{{ability}}</mat-list-item>
+        </mat-list>
+    </mat-card>
+    <mat-card>
+        <h3>Moves:</h3>
+        <table>
+            <tr class="mat-header-row">
+                <th class="mat-header-cell">Move</th>
+                <th class="mat-header-cell">How to learn</th>
+            </tr>
+            <tr *ngFor="let move of pkdata.moves" class="mat-row">
+                <td class="mat-cell">{{move.name}}</td>
+                <td class="mat-cell">{{move.how}}</td>
+            </tr>
+        </table>
+    </mat-card>
 </div>
