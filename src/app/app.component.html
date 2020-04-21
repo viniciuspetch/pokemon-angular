@@ -3,8 +3,9 @@
         <h1>Pokémon Info</h1>
     </button>
     <button mat-button routerLink="/pokelist">Pokémon List</button>
-    <button mat-button routerLink="/typelist">Type List</button>
+    <button mat-button routerLink="/typelist">Type List</button>    
     <button *ngIf="!token" mat-button routerLink="/login">Login</button>
+    <button *ngIf="!token" mat-button routerLink="/signup">Sign up</button>
     <button *ngIf="token" mat-button (click)="signout()">Sign out</button>
 </mat-toolbar>
 <div class="main">

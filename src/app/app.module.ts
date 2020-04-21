@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { MatInputModule } from '@angular/material/input';
     PokemonListComponent,
     TypeListComponent,
     PokemonInfoComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }]),
+    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, {path: 'signup', component: SignupComponent}]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,

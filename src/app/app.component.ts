@@ -22,6 +22,7 @@ export class AppComponent {
 
   signout() {
     this.loginService.clearToken()
+    this.token = this.loginService.getToken();
     this.router.navigateByUrl('/')
   }
 }
