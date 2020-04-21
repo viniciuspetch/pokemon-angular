@@ -1,5 +1,7 @@
-<a routerLink="/pokelist">Pokémon List</a><br>
-<a routerLink="/typelist">Type List</a><br>
-<a routerLink="/login">Login</a><br>
-<hr>
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/"><h1>Pokémon Info</h1></button>
+    <button mat-button routerLink="/pokelist">Pokémon List</button>
+    <button mat-button routerLink="/typelist">Type List</button>
+    <button mat-button routerLink="/login">Login</button>
+</mat-toolbar>
 <router-outlet></router-outlet>

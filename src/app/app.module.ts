@@ -11,6 +11,11 @@ import { PokemonInfoComponent } from './pokemon-info/pokemon-info.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+
+import {MatButtonModule} from '@angular/material/button'; 
+
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
