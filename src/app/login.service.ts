@@ -14,4 +14,12 @@ export class LoginService {
   getToken() {
     return this.token;
   }
+
+  clearToken() {
+    this.token = null
+  }
+
+  verifyToken() {
+    return true;
+  }
 }

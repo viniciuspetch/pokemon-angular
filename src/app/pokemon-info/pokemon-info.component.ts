@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../login.service'
 
 @Component({
   selector: 'app-pokemon-info',
@@ -10,17 +11,19 @@ import { HttpClient } from '@angular/common/http';
 export class PokemonInfoComponent implements OnInit {
   name
   pokemonInfo
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  token
+  constructor(private route: ActivatedRoute, private http: HttpClient, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.token = this.loginService.getToken()
     this.route.params.subscribe(params => {
       this.name = params['name'];
     });
     console.log(this.route.queryParams)
     var searchName = this.name.toLowerCase()
     console.log(searchName)
-    var response = this.http.get('https://pokeapi.co/api/v2/pokemon/'+searchName)
+    var response = this.http.get('https://pokeapi.co/api/v2/pokemon/' + searchName)
     var json;
-    response.subscribe((data) => this.pokemonInfo = {types: data['types']});
+    response.subscribe((data) => this.pokemonInfo = { types: data['types'] });
   }
 }

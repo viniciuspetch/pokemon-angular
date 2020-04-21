@@ -1,3 +1,2 @@
 <div>Here is {{name}}</div><br>
-<div>Types: {{pokemonInfo.types[0].type.name.charAt(0).toUpperCase() + pokemonInfo.types[0].type.name.slice(1)}}<span *ngIf="pokemonInfo.types[1].type.name">, {{pokemonInfo.types[1].type.name.charAt(0).toUpperCase() + pokemonInfo.types[1].type.name.slice(1)}}</span></div>
-
+<div *ngIf="token">Types: {{pokemonInfo.types[0].type.name.charAt(0).toUpperCase() + pokemonInfo.types[0].type.name.slice(1)}}<span *ngIf="pokemonInfo.types[1].type.name">, {{pokemonInfo.types[1].type.name.charAt(0).toUpperCase() + pokemonInfo.types[1].type.name.slice(1)}}</span></div>
