@@ -35,7 +35,13 @@ export class PokemonInfoComponent implements OnInit {
     var response = this.http.get('https://pokeapi.co/api/v2/pokemon/' + searchName)
     response.subscribe((data) => {
       var id = data['id']
-      var name = this.name
+      if (isNaN(this.name)) {
+        var name = this.name
+      }
+      else {
+        var name = data['name'].charAt(0).toUpperCase() + data['name'].slice(1)
+      }
+
       var sprite = data['sprites'].front_default
 
       var types = []
@@ -72,12 +78,12 @@ export class PokemonInfoComponent implements OnInit {
         stats.push({ name: i.stat.name, value: i.base_stat })
       }
       */
-      stats.push({name: 'Speed', value: data['stats'][0].base_stat})
-      stats.push({name: 'Sp.Defense', value: data['stats'][1].base_stat})
-      stats.push({name: 'Sp.Attack', value: data['stats'][2].base_stat})
-      stats.push({name: 'Defense', value: data['stats'][3].base_stat})
-      stats.push({name: 'Attack', value: data['stats'][4].base_stat})
-      stats.push({name: 'HP', value: data['stats'][5].base_stat})
+      stats.push({ name: 'Speed', value: data['stats'][0].base_stat })
+      stats.push({ name: 'Sp.Defense', value: data['stats'][1].base_stat })
+      stats.push({ name: 'Sp.Attack', value: data['stats'][2].base_stat })
+      stats.push({ name: 'Defense', value: data['stats'][3].base_stat })
+      stats.push({ name: 'Attack', value: data['stats'][4].base_stat })
+      stats.push({ name: 'HP', value: data['stats'][5].base_stat })
       stats = stats.reverse()
       this.pkdata = { id, sprite, stats, name, types, abilities, moves }
     });
