@@ -16,6 +16,10 @@ export class TypeInfoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private loginService: LoginService) { }
 
+  capitalize(str): string {
+    return str.charAt(0).toUpperCase()+str.split("_").join(" ").slice(1)
+  }
+
   ngOnInit(): void {
     console.log("/pokemon/:pokemon");
     console.log(this.loginService.getToken());
@@ -28,8 +32,6 @@ export class TypeInfoComponent implements OnInit {
     var searchName = this.name.toLowerCase()
     console.log(searchName)
 
-
-
     var foundUrl = ""
     for (let i of typelist) {
       if (i.name == this.name) {
@@ -39,16 +41,16 @@ export class TypeInfoComponent implements OnInit {
     var response = this.http.get(foundUrl)
     response.subscribe((data) => {
       var name = this.name;
-      var dmgtype = data['move_damage_class'].name;
+      var dmgtype = this.capitalize(data['move_damage_class'].name);
 
       var dmgrel = []
       for (let i in data['damage_relations']) {
         var list = []
         for (let j of data['damage_relations'][i]) {
-          list.push(j.name);
+          list.push(this.capitalize(j.name));
         }
         if (list.length != 0) {
-          dmgrel.push({name: i, list})
+          dmgrel.push({name: this.capitalize(i), list})
         }
       }
 
