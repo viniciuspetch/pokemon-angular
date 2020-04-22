@@ -17,7 +17,7 @@ export class PokemonInfoComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private loginService: LoginService, private changeDetectorRef: ChangeDetectorRef) { }
 
   capitalize(str): string {
-    return str.charAt(0).toUpperCase() + str.split("_").join(" ").slice(1)
+    return str.charAt(0).toUpperCase() + str.split("_").join(" ").split("-").join(" ").slice(1)
   }
 
   ngOnInit(): void {
