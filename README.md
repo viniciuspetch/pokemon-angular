@@ -1,27 +1,31 @@
-# PokemonAngular
+# Pokémon Information with Angular and Angular Material
+Contains:
+- Front-end with Angular
+- Back-end with Node.js + Express and MongoDB
+- Data from pokeapi.co
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+## Front-end
+The front-end was made in Angular 9 using Angular Material
 
-## Development server
+### Functionalities
+- List of pokémon and types, clickable to see their info
+- Information about pokémon and types, from the pokeapi.co API
+- User sign up and login
+- Information can only be seen if you're logged
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### How to run
+- Run `npm install` to install packages
+- Run `ng serve` to start the front-end server
+- Go to `localhost:4200` to access the page
 
-## Code scaffolding
+## Back-end
+Back-end made with Node.js and Express, using MongoDB as database. Used to host users profiles (for now, only username and password)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Functionalities
+- An back-end/API service for user login.
+- `HTTP POST` at `localhost:8001/signup` to create an account
+- `HTTP POST` at `localhost:8001/login` to login and receive an JWT token
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### How to run
+- Run your MongoDB server at port `27017` and create a database named `pokemon_users`
+- Run `node login` to start the back-end server at port 8001
