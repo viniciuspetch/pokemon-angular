@@ -21,6 +21,8 @@ The front-end was made in Angular 9 using Angular Material
 ## Back-end
 Back-end made with Node.js and Express, using MongoDB as database. Used to host users profiles (for now, only username and password)
 
+This back-end server was implemented in a single JavaScript file ("login.js") and uses the same package.json of the front-end to track the packages needed.
+
 ### Functionalities
 - An back-end/API service for user login.
 - `HTTP POST` at `localhost:8001/signup` to create an account
