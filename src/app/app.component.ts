@@ -24,7 +24,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.showMenu = false;
     this.breakpointObserver
-      .observe(['(min-width: 500px)'])
+      .observe(['(min-width: 550px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.showMenu = false;
