@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './signup/signup.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
+import { TypeInfoComponent } from './type-info/type-info.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,15 @@ import { MatChipsModule } from '@angular/material/chips';
     TypeListComponent,
     PokemonInfoComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TypeInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, { path: 'signup', component: SignupComponent }]),
+    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, { path: 'signup', component: SignupComponent }, { path: 'type/:name', component: TypeInfoComponent }]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,

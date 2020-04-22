@@ -1,7 +1,7 @@
 <mat-list>
     <div *ngFor="let type of typelist">
         <mat-list-item>
-            <a title="More about {{type.name}}" href={{type.url}}>{{ type.name }}</a>
+            <a title="More about {{type.name}}" routerLink="/type/{{type.name}}">{{ type.name }}</a>
         </mat-list-item>
         <mat-divider></mat-divider>        
     </div>
