@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { pokemonlist } from '../pokemonlist'
+import { FormBuilder, } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,11 +9,17 @@ import { pokemonlist } from '../pokemonlist'
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
+  pkNumberForm;
   pkListFinal;
   pkListUnfiltered;
   searchWord;
 
-  constructor() { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { this.pkNumberForm = this.formBuilder.group({ number: 1 }) }
+
+  pkNumber(pkNumberData) {
+    var number = pkNumberData.number
+    this.router.navigateByUrl('/pokemon/' + number)
+  }
 
   searchChange(searchWord) {
     var pkListFinal = []

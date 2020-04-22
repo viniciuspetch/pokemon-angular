@@ -1,7 +1,17 @@
+<form [formGroup]="pkNumberForm" (ngSubmit)="pkNumber(pkNumberForm.value)">
+    <mat-form-field appearance="outline">
+        <mat-label for="number">Search by Pokémon nº</mat-label>
+        <input matInput id="number" type="text" formControlName="number">
+    </mat-form-field>
+    <br />
+    <button style="margin: 0 0 30px 0" mat-button class="button" type="submit">Search</button>
+</form>
+<mat-divider></mat-divider>
 <mat-form-field appearance="outline">
     <mat-label for="search">Search</mat-label>
     <input matInput (input)="searchChange($event.target.value)" id="search" type="text">
 </mat-form-field>
+<mat-divider></mat-divider>
 <mat-list>
     <div *ngFor="let gen of pkListFinal">
         <div *ngFor="let pokemon of gen">
