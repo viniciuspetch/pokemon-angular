@@ -10,20 +10,37 @@ import { Router } from '@angular/router'
 })
 export class SignupComponent implements OnInit {
   signupForm;
+  validation;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { this.signupForm = this.formBuilder.group({ username: '', password: '' }) }
 
   ngOnInit(): void {
+    this.validation = { invalidUsername: false, invalidPassword: false }
   }
 
   onSubmit(signupData) {
     console.log(signupData)
     var username = signupData.username;
     var password = signupData.password;
+    if (!username || username == "") {
+      this.validation.invalidUsername = true;
+    }
+    else {
+      this.validation.invalidUsername = false;
+    }
+    if (!password || password == "") {
+      this.validation.invalidPassword = true;
+    }
+    else {
+      this.validation.invalidPassword = false;
+    }
+    console.log(this.validation)
 
-    var response = this.http.post('http://localhost:8001/signup', { username, password }, { responseType: 'text' });
-    response.subscribe((data) => {
-      this.router.navigateByUrl('/')
-    })
+    if (!this.validation.invalidUsername && !this.validation.invalidPassword) {
+      var response = this.http.post('http://localhost:8001/signup', { username, password }, { responseType: 'text' });
+      response.subscribe((data) => {
+        this.router.navigateByUrl('/')
+      })
+    }
   }
 }

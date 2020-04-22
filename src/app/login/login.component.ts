@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginData) {
     console.log(loginData);
-    console.log("Here");
     var username = loginData.username;
     var password = loginData.password;
     if (!username || username == "") {
@@ -37,6 +36,7 @@ export class LoginComponent implements OnInit {
     else {
       this.validation.invalidPassword = false;
     }
+
     if (!this.validation.invalidUsername && !this.validation.invalidPassword) {
       var response = this.http.post('http://localhost:8001/login', { username, password });
       response.subscribe((data) => {

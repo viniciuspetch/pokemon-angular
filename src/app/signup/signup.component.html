@@ -3,11 +3,13 @@
         <mat-label for="username">Username</mat-label>
         <input matInput id="username" type="text" formControlName="username">
     </mat-form-field>
+    <div style="color: red" *ngIf="validation.invalidUsername">Your username is not valid</div>
     <br/>
     <mat-form-field appearance="outline">
         <mat-label for="password">Password</mat-label>
         <input matInput id="password" type="password" formControlName="password">
     </mat-form-field>
+    <div style="color: red" *ngIf="validation.invalidPassword">Your password is not valid</div>
     <br/>
     <button mat-button class="button" type="submit">Login</button>
 </form>
