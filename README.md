@@ -27,5 +27,6 @@ Back-end made with Node.js and Express, using MongoDB as database. Used to host 
 - `HTTP POST` at `localhost:8001/login` to login and receive an JWT token
 
 ### How to run
+- Run `npm install` to install packages
 - Run your MongoDB server at port `27017` and create a database named `pokemon_users`
-- Run `node login` to start the back-end server at port 8001
+- Run `node login` to start the back-end server at port `8001`
