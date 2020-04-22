@@ -50,10 +50,12 @@ login = function (req, res) {
         .findOne({ username: username })
     )
     .then((docs) => {
-      if (bcrypt.compareSync(password, docs.hash)) {
+      if (docs.hash && bcrypt.compareSync(password, docs.hash)) {
+        console.log("Correct input");
         res.json({ token: jwt.sign({ username }, "pokemon") });
       } else {
-        res.sendStatus(400);
+        console.log("Wrong input");
+        res.json({ token: "" });
       }
     })
     .catch((err) => console.log(err))
