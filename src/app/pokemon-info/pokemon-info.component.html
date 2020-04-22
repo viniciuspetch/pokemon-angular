@@ -16,7 +16,7 @@
     <mat-card>
         <h3>Types:</h3>
         <mat-list *ngFor="let type of pkdata.types">
-            <mat-list-item>{{type}}</mat-list-item>
+            <mat-list-item><a routerLink="/type/{{type}}">{{type}}</a></mat-list-item>
         </mat-list>
     </mat-card>
     <mat-card>

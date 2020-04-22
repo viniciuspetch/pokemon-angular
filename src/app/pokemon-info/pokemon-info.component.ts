@@ -16,6 +16,10 @@ export class PokemonInfoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private loginService: LoginService, private changeDetectorRef: ChangeDetectorRef) { }
 
+  capitalize(str): string {
+    return str.charAt(0).toUpperCase() + str.split("_").join(" ").slice(1)
+  }
+
   ngOnInit(): void {
     console.log("/pokemon/:pokemon");
     console.log(this.loginService.getToken());
@@ -38,10 +42,10 @@ export class PokemonInfoComponent implements OnInit {
       var stats = []
 
       for (let i of data['types']) {
-        types.push(i.type.name)
+        types.push(this.capitalize(i.type.name))
       }
       for (let i in data['abilities']) {
-        abilities.push(data['abilities'][i].ability.name)
+        abilities.push(this.capitalize(data['abilities'][i].ability.name))
       }
       for (let i in data['moves']) {
         var how = "";
@@ -59,7 +63,7 @@ export class PokemonInfoComponent implements OnInit {
           how = 'Egg Move'
         }
 
-        moves.push({ name: data['moves'][i].move.name, how: how })
+        moves.push({ name: this.capitalize(data['moves'][i].move.name), how: how })
       }
       /*
       for (let i of data['stats']) {
