@@ -7,17 +7,37 @@ import { pokemonlist } from '../pokemonlist'
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemonlist;
+  pkListFinal;
+  pkListUnfiltered;
+  searchWord;
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.pokemonlist = pokemonlist
-    var pokemonListOnly = []
+  searchChange(searchWord) {
+    console.log(searchWord)
+    var pkListFinal = []
     for (var i = 0; i < 8; i++) {
-      pokemonListOnly.push(pokemonlist["gen" + (i + 1)])
+      pkListFinal.push(this.pkListUnfiltered[i].filter((item) => item.toLowerCase().includes(searchWord)))
     }
-    this.pokemonlist = pokemonListOnly
+    this.pkListFinal = pkListFinal
   }
 
+  ngOnInit(): void {
+    this.searchWord = "";
+    var pkListUnfiltered = [];
+    for (var i = 0; i < 8; i++) {
+      pkListUnfiltered.push(pokemonlist["gen" + (i + 1)]);
+    }
+    this.pkListUnfiltered = pkListUnfiltered;
+    this.pkListFinal = pkListUnfiltered;
+  }
 }
+
+/*
+    let rawList = [];
+    for (let key in pokemonList) {
+      rawList = rawList.concat(pokemonList[key]);
+    }
+
+    return rawList.filter((item) => item.toLowerCase().includes(pokemonName));
+*/
