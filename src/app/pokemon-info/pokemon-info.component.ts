@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service'
+import { stat } from 'fs';
 
 @Component({
   selector: 'app-pokemon-info',
@@ -35,6 +36,7 @@ export class PokemonInfoComponent implements OnInit {
       var types = []
       var abilities = []
       var moves = []
+      var stats = []
 
       for (let i of data['types']) {
         types.push(i.type.name)
@@ -60,7 +62,19 @@ export class PokemonInfoComponent implements OnInit {
 
         moves.push({ name: data['moves'][i].move.name, how: how })
       }
-      this.pkdata = { id, sprite, name, types, abilities, moves }
+      /*
+      for (let i of data['stats']) {
+        stats.push({ name: i.stat.name, value: i.base_stat })
+      }
+      */
+      stats.push({name: 'Speed', value: data['stats'][0].base_stat})
+      stats.push({name: 'Sp.Defense', value: data['stats'][1].base_stat})
+      stats.push({name: 'Sp.Attack', value: data['stats'][2].base_stat})
+      stats.push({name: 'Defense', value: data['stats'][3].base_stat})
+      stats.push({name: 'Attack', value: data['stats'][4].base_stat})
+      stats.push({name: 'HP', value: data['stats'][5].base_stat})
+      stats = stats.reverse()
+      this.pkdata = { id, sprite, stats, name, types, abilities, moves }
       console.log(this.pkdata)
     });
   }

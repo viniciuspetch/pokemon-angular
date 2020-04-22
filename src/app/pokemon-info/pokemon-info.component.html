@@ -5,6 +5,12 @@
 
 <div *ngIf="token">
     <mat-card>
+        <h3>Stats:</h3>
+        <mat-list *ngFor="let stat of pkdata.stats">
+            <mat-list-item>{{stat.name}}: {{stat.value}}</mat-list-item>
+        </mat-list>
+    </mat-card>
+    <mat-card>
         <h3>Types:</h3>
         <mat-list *ngFor="let type of pkdata.types">
             <mat-list-item>{{type}}</mat-list-item>
