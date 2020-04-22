@@ -15,6 +15,6 @@ export class LoginService {
   }
 
   clearToken() {
-    this.setToken(null)
+    this.setToken("")
   }
 }
