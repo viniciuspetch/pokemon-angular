@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service'
-import { stat } from 'fs';
 
 @Component({
   selector: 'app-pokemon-info',

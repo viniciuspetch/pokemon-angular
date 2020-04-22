@@ -6,7 +6,7 @@
     <mat-card *ngFor="let dmgrel of tpdata.dmgrel">
         <h3>{{dmgrel.name}}:</h3>
         <mat-list>
-            <mat-list-item *ngFor="let i of dmgrel.list"><a routerLink="/type/{{i}}">{{i}}</a></mat-list-item>
+            <mat-list-item *ngFor="let i of dmgrel.list"><a href="javascript:void(0)" (click)="getData(i)">{{i}}</a></mat-list-item>
         </mat-list>        
     </mat-card>
 </div>
