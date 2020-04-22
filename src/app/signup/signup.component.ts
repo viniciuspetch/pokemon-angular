@@ -19,7 +19,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(signupData) {
-    console.log(signupData)
     var username = signupData.username;
     var password = signupData.password;
     if (!username || username == "") {
@@ -34,7 +33,6 @@ export class SignupComponent implements OnInit {
     else {
       this.validation.invalidPassword = false;
     }
-    console.log(this.validation)
 
     if (!this.validation.invalidUsername && !this.validation.invalidPassword) {
       var response = this.http.post('http://localhost:8001/signup', { username, password }, { responseType: 'text' });

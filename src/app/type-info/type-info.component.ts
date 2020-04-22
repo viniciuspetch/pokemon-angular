@@ -21,12 +21,10 @@ export class TypeInfoComponent implements OnInit {
   }
 
   getData(tpname) {
-    event.preventDefault()
     this.tpdata = {}
     this.token = this.loginService.getToken()
     this.name = tpname
     var searchName = this.name.toLowerCase()
-    console.log(searchName)
 
     var foundUrl = ""
     for (let i of typelist) {
@@ -51,13 +49,10 @@ export class TypeInfoComponent implements OnInit {
       }
 
       this.tpdata = { name, dmgtype, dmgrel }
-      console.log(this.tpdata)
     })
   }
 
   ngOnInit(): void {
-    console.log("/pokemon/:pokemon");
-    console.log(this.loginService.getToken());
     this.route.params.subscribe(params => {
       this.getData(params['name'])
     });    

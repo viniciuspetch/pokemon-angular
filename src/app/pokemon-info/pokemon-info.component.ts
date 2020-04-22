@@ -26,9 +26,6 @@ export class PokemonInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("/pokemon/:pokemon");
-    console.log(this.loginService.getToken());
-
     this.pkdata = {}
     this.token = this.loginService.getToken()
     this.route.params.subscribe(params => {
@@ -83,7 +80,6 @@ export class PokemonInfoComponent implements OnInit {
       stats.push({name: 'HP', value: data['stats'][5].base_stat})
       stats = stats.reverse()
       this.pkdata = { id, sprite, stats, name, types, abilities, moves }
-      console.log(this.pkdata)
     });
   }
 }

@@ -16,12 +16,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) { this.loginForm = this.formBuilder.group({ username: '', password: '' }) }
 
   ngOnInit(): void {
-    console.log(this.loginService.getToken())
     this.validation = { invalidUsername: false, invalidPassword: false, invalidResponse: false }
   }
 
   onSubmit(loginData) {
-    console.log(loginData);
     var username = loginData.username;
     var password = loginData.password;
     if (!username || username == "") {
@@ -46,7 +44,6 @@ export class LoginComponent implements OnInit {
         else {
           this.validation.invalidResponse = false;
           this.loginService.setToken(data['token']);
-          console.log(this.loginService.getToken());
           if (this.loginService.getToken()) {
             this.router.navigateByUrl('/')
           }

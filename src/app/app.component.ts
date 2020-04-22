@@ -33,12 +33,8 @@ export class AppComponent {
         }
       });
 
-    console.log("/")
-
     this.token = this.loginService.getToken()
     this.title = "Pokémon Info - Angular";
-
-    console.log(this.token)
   }
 
   signout() {

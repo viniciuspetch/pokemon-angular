@@ -14,7 +14,6 @@ export class PokemonListComponent implements OnInit {
   constructor() { }
 
   searchChange(searchWord) {
-    console.log(searchWord)
     var pkListFinal = []
     for (var i = 0; i < 8; i++) {
       pkListFinal.push(this.pkListUnfiltered[i].filter((item) => item.toLowerCase().includes(searchWord)))
@@ -32,12 +31,3 @@ export class PokemonListComponent implements OnInit {
     this.pkListFinal = pkListUnfiltered;
   }
 }
-
-/*
-    let rawList = [];
-    for (let key in pokemonList) {
-      rawList = rawList.concat(pokemonList[key]);
-    }
-
-    return rawList.filter((item) => item.toLowerCase().includes(pokemonName));
-*/
