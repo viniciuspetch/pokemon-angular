@@ -11,11 +11,13 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   loginForm;
+  validation;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private loginService: LoginService) { this.loginForm = this.formBuilder.group({ username: '', password: '' }) }
 
   ngOnInit(): void {
     console.log(this.loginService.getToken())
+    this.validation = { invalidUsername: false, invalidPassword: false, invalidResponse: false }
   }
 
   onSubmit(loginData) {
@@ -23,14 +25,33 @@ export class LoginComponent implements OnInit {
     console.log("Here");
     var username = loginData.username;
     var password = loginData.password;
-
-    var response = this.http.post('http://localhost:8001/login', { username, password });
-    response.subscribe((data) => {
-      this.loginService.setToken(data['token']);
-      console.log(this.loginService.getToken());
-      if (this.loginService.getToken()) {
-        this.router.navigateByUrl('/')
-      }
-    })
+    if (!username || username == "") {
+      this.validation.invalidUsername = true;
+    }
+    else {
+      this.validation.invalidUsername = false;
+    }
+    if (!password || password == "") {
+      this.validation.invalidPassword = true;
+    }
+    else {
+      this.validation.invalidPassword = false;
+    }
+    if (!this.validation.invalidUsername && !this.validation.invalidPassword) {
+      var response = this.http.post('http://localhost:8001/login', { username, password });
+      response.subscribe((data) => {
+        if (!data["token"] || data["token"] == "") {
+          this.validation.invalidResponse = true;
+        }
+        else {
+          this.validation.invalidResponse = false;
+          this.loginService.setToken(data['token']);
+          console.log(this.loginService.getToken());
+          if (this.loginService.getToken()) {
+            this.router.navigateByUrl('/')
+          }
+        }
+      })
+    }
   }
 }
