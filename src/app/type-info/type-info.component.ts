@@ -35,7 +35,13 @@ export class TypeInfoComponent implements OnInit {
     var response = this.http.get(foundUrl)
     response.subscribe((data) => {
       var name = this.name;
-      var dmgtype = this.capitalize(data['move_damage_class'].name);
+      if (data['move_damage_class']) {
+        var dmgtype = this.capitalize(data['move_damage_class'].name);
+      }
+      else {
+        var dmgtype = "None"
+      }
+
 
       var dmgrel = []
       for (let i in data['damage_relations']) {
@@ -55,6 +61,6 @@ export class TypeInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.getData(params['name'])
-    });    
+    });
   }
 }
