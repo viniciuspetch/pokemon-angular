@@ -30,9 +30,12 @@ export class PokemonInfoComponent implements OnInit {
     response.subscribe((data) => {
       var id = data['id']
       var name = this.name
+      var sprite = data['sprites'].front_default
+
       var types = []
       var abilities = []
       var moves = []
+
       for (let i of data['types']) {
         types.push(i.type.name)
       }
@@ -43,7 +46,7 @@ export class PokemonInfoComponent implements OnInit {
         var how = "";
         var learnMethod = data['moves'][i].version_group_details[0].move_learn_method.name
         if (learnMethod == 'level-up') {
-          how = 'Levelup at level '+data['moves'][i].version_group_details[0].level_learned_at;
+          how = 'Levelup at level ' + data['moves'][i].version_group_details[0].level_learned_at;
         }
         else if (learnMethod == 'machine') {
           how = 'TM/HM';
@@ -55,9 +58,9 @@ export class PokemonInfoComponent implements OnInit {
           how = 'Egg Move'
         }
 
-        moves.push({name: data['moves'][i].move.name, how: how})
+        moves.push({ name: data['moves'][i].move.name, how: how })
       }
-      this.pkdata = { id, name, types, abilities, moves }
+      this.pkdata = { id, sprite, name, types, abilities, moves }
       console.log(this.pkdata)
     });
   }

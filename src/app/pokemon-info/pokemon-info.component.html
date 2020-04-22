@@ -1,4 +1,8 @@
-<h2>nº {{pkdata.id}}: {{pkdata.name}}</h2>
+<mat-card>
+    <h2>nº {{pkdata.id}}: {{pkdata.name}}</h2>
+    <div *ngIf="token"><img src="{{pkdata.sprite}}" alt=""></div>
+</mat-card>
+
 <div *ngIf="token">
     <mat-card>
         <h3>Types:</h3>
