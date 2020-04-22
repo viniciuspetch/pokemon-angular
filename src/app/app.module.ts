@@ -40,7 +40,7 @@ import { MatMenuModule } from '@angular/material/menu';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, { path: 'signup', component: SignupComponent }, { path: 'type/:name', component: TypeInfoComponent }]),
+    RouterModule.forRoot([{ path: 'pokelist', component: PokemonListComponent }, { path: 'typelist', component: TypeListComponent }, { path: 'pokemon/:name', component: PokemonInfoComponent }, { path: 'login', component: LoginComponent }, { path: 'signup', component: SignupComponent }, { path: 'type/:name', component: TypeInfoComponent },  { path: '',   redirectTo: '/pokelist', pathMatch: 'full' }]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
